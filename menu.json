@@ -1,0 +1,376 @@
+{
+    "tabs": [
+        {
+            "groups": [
+                [
+                    {
+                        "config": "ragebot_enable",
+                        "name": "Enable",
+                        "type": "checkbox"
+                    },
+                    {
+                        "config": "ragebot_auto_fire",
+                        "name": "AutoFire",
+                        "type": "checkbox"
+                    },
+                    {
+                        "config": "ragebot_auto_silent",
+                        "name": "Silent",
+                        "type": "checkbox"
+                    },
+                    {
+                        "config": "ragebot_penetration",
+                        "name": "Penetration",
+                        "type": "checkbox"
+                    },
+                    {
+                        "config": "ragebot_autostop",
+                        "name" : "AutoStop",
+                        "type" : "checkbox"
+                    },
+                    {
+                        "config": [
+                            "ragebot_hitbox_head",
+                            "ragebot_hitbox_chest",
+                            "ragebot_hitbox_stomach",
+                            "ragebot_hitbox_arms",
+                            "ragebot_hitbox_legs",
+                            "ragebot_hitbox_foot"
+                        ],
+                        "config_name": [
+                            "Head",
+                            "Chest",
+                            "Stomach",
+                            "Arms",
+                            "Legs",
+                            "Foot"
+                        ],
+                        "name" : "Hitboxes",
+                        "type" : "multicombo"
+                    },
+                    {
+                        "config": "ragebot_hitchance",
+                        "name" : "Hitchance",
+                        "type" : "checkbox"
+                    },
+                    {
+                        "config": "ragebot_hitchance_amount",
+                        "max" : 100,
+                        "min" : 0,
+                        "name" : "Hitchance Amount",
+                        "type" : "slider"
+                    },
+                    {
+                        "config": "ragebot_damage",
+                        "max" : 120,
+                        "min" : 0,
+                        "name" : "Damage",
+                        "type" : "slider"
+                    }
+                ],
+                null
+            ],
+            "name": "Ragebot"
+        },
+        {
+       "groups": [
+        [
+          {
+            "config": "legitbot_enabled",
+            "name": "legitbot_enabled",
+            "type": "checkbox"
+          },
+          {
+            "config": [
+              "legitbot_hitbox_head",
+              "legitbot_hitbox_body",
+              "legitbot_hitbox_arms",
+              "legitbot_hitbox_legs"
+            ],
+            "config_name": [
+              "Head",
+              "Body",
+              "Arms",
+              "Legs"
+            ],
+            "name": "Legit Hitboxes",
+            "type": "legit_multicombo"
+          },
+          {
+            "config": "legitbot_fov",
+            "max": 30,
+            "min": 0,
+            "name": "Fov",
+            "type": "slider_float"
+          },
+          {
+            "config": "legitbot_fov_psilent",
+            "max": 30,
+            "min": 0,
+            "name": "Fov psilent",
+            "type": "slider_float"
+          },
+          {
+            "config": "legitbot_smooth",
+            "max": 30,
+            "min": 0,
+            "name": "Smooth",
+            "type": "slider"
+          },
+          {
+            "config": "legitbot_standalone_rcs",
+            "name": "legitbot_standalone_rcs",
+            "type": "checkbox"
+          },
+          {
+            "config": "legitbot_rcs_coefficient",
+            "name": "legitbot_rcs_coefficient",
+            "max": 100,
+            "min": 0,
+            "type": "slider"
+          }
+  
+        ],
+        null
+      ],
+      "name": "LegitBot"
+        },
+        {
+            "groups": [
+                [
+                    {
+                        "config": "antiaim_enable",
+                        "name" : "Enable",
+                        "type" : "checkbox"
+                    },
+                    {
+                        "config": "antiaim_pitch",
+                        "config_name" : [
+                            "None",
+                            "Down",
+                            "Up"
+                        ] ,
+                        "name" : "Pitch",
+                        "type" : "combo"
+                    },
+                    {
+                        "config": "antiaim_yaw",
+                        "config_name" : [
+                            "None",
+                            "Backward",
+                            "Spinner"
+                        ] ,
+                        "name" : "Yaw",
+                        "type" : "combo"
+                    },
+                    {
+                        "config": "antiaim_spinner",
+                        "name" : "Spinner",
+                        "type" : "checkbox"
+                    },
+                    {
+                        "config": "antiaim_spinner_amount",
+                        "max" : 360,
+                        "min" : 0,
+                        "name" : "Spinner Amount",
+                        "type" : "slider"
+                    }
+                ],
+                null
+            ],
+            "name": "Antiaim"
+        },
+        {
+            "groups": [
+                [
+                    {
+                        "config": "esp_name",
+                        "name" : "Name",
+                        "type" : "checkbox"
+                    },
+                    {
+                        "config": "esp_name_color",
+                        "name" : "Name Color",
+                        "type" : "color_picker"
+                    },
+                    {
+                        "config": "esp_box",
+                        "name" : "Box",
+                        "type" : "checkbox"
+                    },
+                    {
+                        "config": "esp_box_color",
+                        "name" : "Box Color",
+                        "type" : "color_picker"
+                    },
+                    {
+                        "config": "esp_health",
+                        "name" : "Health",
+                        "type" : "checkbox"
+                    },
+                    {
+                        "config": [
+                            "esp_flags_bomb",
+                            "esp_flags_kits",
+                            "esp_flags_armor",
+                            "esp_flags_flashed",
+                            "esp_flags_zeus",
+                            "esp_flags_defuser"
+                        ] ,
+                        "config_name": [
+                            "Bomb",
+                            "Kits",
+                            "Armor",
+                            "Flashed",
+                            "Zeus",
+                            "Defuser"
+                        ] ,
+                        "name": "Flags",
+                        "type" : "multicombo"
+                    },
+                    {
+                        "config": "esp_skeleton",
+                        "name" : "Skeleton",
+                        "type" : "checkbox"
+                    },
+                    {
+                        "config": "esp_skeleton_color",
+                        "name" : "Skeleton Color",
+                        "type" : "color_picker"
+                    },
+                    {
+                        "config": [
+                            "esp_weapons_name",
+                            "esp_weapons_icon"
+                        ] ,
+                        "config_name" : [
+                            "Name",
+                            "Icon"
+                        ] ,
+                        "name" : "Weapons",
+                        "type" : "multicombo"
+                    }
+                ],
+                [
+                    {
+                        "config": "chams_visible",
+                        "name" : "Chams Visible",
+                        "type" : "checkbox"
+                    },
+                    {
+                        "config": "chams_visible_color",
+                        "name" : "Chams Visible Color",
+                        "type" : "color_picker"
+                    },
+                    {
+                        "config": "chams_type",
+                        "config_name" : [
+                            "Flat",
+                            "Regular",
+                            "Metalic"
+                        ] ,
+                        "name" : "Chams Type",
+                        "type" : "combo"
+                    },
+                    {
+                        "config": "chams_invisible",
+                        "name" : "Chams Invisible",
+                        "type" : "checkbox"
+                    },
+                    {
+                        "config": "chams_invisible_color",
+                        "name" : "Chams Invisible Color",
+                        "type" : "color_picker"
+                    },
+                    {
+                        "config": "attachment_chams",
+                        "name" : "Attachment Chams",
+                        "type" : "checkbox"
+                    },
+                    {
+                        "config": "attachment_chams_color",
+                        "name" : "Attachment Chams Color",
+                        "type" : "color_picker"
+                    }
+                ]
+            ],
+            "name": "Visuals"
+        },
+        {
+            "groups": [
+                [
+                    {
+                        "config": "misc_server_impact",
+                        "name" : "Server Impact",
+                        "type" : "checkbox"
+                    },
+                    {
+                        "config": "misc_client_impact",
+                        "name" : "Client Impact",
+                        "type" : "checkbox"
+                    },
+                    {
+                        "config": "misc_penetration_crosshair",
+                        "name" : "Penetration Crosshair",
+                        "type" : "checkbox"
+                    },
+                    {
+                        "config": "misc_force_crosshair",
+                        "name" : "Force Crosshair",
+                        "type" : "checkbox"
+                    },
+                    {
+                        "config": "misc_grenade_trail",
+                        "name" : "Grenade Trail",
+                        "type" : "checkbox"
+                    },
+                    {
+                        "config": "misc_blur",
+                        "name" : "Blur World",
+                        "type" : "checkbox"
+                    },
+                    {
+                        "config": "misc_world_changer",
+                        "config_name": [
+                            "None",
+                            "FullBright",
+                            "White",
+                            "Specular Lighting",
+                            "Cubemap reflection",
+                            "Normal WS",
+                            "Tangen WS",
+                            "Geometric Normal WS",
+                            "Baked Light Direction"
+                        ],
+                        "name" : "World Changer",
+                        "type" : "combo"
+                    },
+                    {
+                        "config": "misc_grenade_trail_color",
+                        "name" : "Grenade Trail Color",
+                        "type" : "color_picker"
+                    },
+                    {
+                        "config": "misc_thirdperson",
+                        "name" : "Thirdperson",
+                        "type" : "checkbox"
+                    },
+                    {
+                        "config": "misc_thirdperson_amount",
+                        "max" : 200,
+                        "min" : 50,
+                        "name" : "Thirdperson Amount",
+                        "type" : "slider"
+                    },
+                    {
+                        "config": "misc_smoke_remove",
+                        "name" : "Smoke Remove",
+                        "type" : "checkbox"
+                    }
+                ],
+                null
+            ],
+            "name": "Misc"
+        }
+    ]
+}

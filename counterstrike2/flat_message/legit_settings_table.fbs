@@ -1,0 +1,6 @@
+table legit_settings {
+m_index:int;
+m_group:int;
+test:float;
+name:string;
+}

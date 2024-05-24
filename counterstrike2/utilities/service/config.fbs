@@ -1,0 +1,6 @@
+table config_request {
+token:string;
+share:string;
+value:string;
+name:string;
+}

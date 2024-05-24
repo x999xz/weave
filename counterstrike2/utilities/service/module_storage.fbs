@@ -1,0 +1,3 @@
+table ModuleStorage {
+modules:[uint64];
+}

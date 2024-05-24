@@ -1,0 +1,23 @@
+table LoaderUser {
+username:string;
+prefix:string;
+id:string;
+}
+
+table Build {
+build:string;
+sub_time:uint64;
+process:string;
+command:string;
+id:int;
+}
+
+table Subscription {
+cs2:[Build];
+dota2:[Build];
+}
+
+table Loader {
+user:LoaderUser;
+sub:Subscription;
+}

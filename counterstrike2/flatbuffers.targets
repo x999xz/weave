@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup>
+		<PropertyPageSchema Include="$(MSBuildThisFileDirectory)flatbuffers.xml" />
+		<AvailableItemName Include="Flatbuffer">
+			<Targets>Flatbuffers</Targets>
+		</AvailableItemName>
+	</ItemGroup>
+	<Target
+        Name="Flatbuffers"
+        BeforeTargets="ClCompile">
+
+		<Message Importance="High" Text="Compiling flat message files..." />
+
+		<ItemGroup>
+			<Flatbuffer>
+				<Message>-- Compiling %(Filename)%(Extension)</Message>
+				<Command>
+					$(C):\a\flatc.exe --cpp --gen-mutable --gen-object-api --reflect-names --gen-compare -o flat_message/output/cpp/%(Filename)_generated.h $(FullPath) &amp;&amp;
+					$(C):\a\flatc.exe --ts --gen-mutable --gen-object-api --reflect-names --gen-compare -o flat_message/output/ts/%(Filename)_generated.h $(FullPath)
+				</Command>
+				<Outputs>flat_message/output/cpp/%(Filename)_generated.h</Outputs>
+			</Flatbuffer>
+		</ItemGroup>
+
+		<CustomBuild
+            Sources="@(Flatbuffer)"
+            MinimalRebuildFromTracking="true"
+            TrackerLogDirectory="$(TLogLocation)"/>
+	</Target>
+</Project>

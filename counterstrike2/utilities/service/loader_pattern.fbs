@@ -1,0 +1,8 @@
+table Pattern {
+module:uint64;
+offset:uint64;
+}
+
+table LoaderPattern {
+pattern:[Pattern];
+}

@@ -1,0 +1,13 @@
+table Config {
+name:string;
+value:string;
+share:string;
+updated:uint64;
+created:uint64;
+user:string;
+owner:string;
+}
+
+table Configs {
+    config:[Config];
+}

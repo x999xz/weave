@@ -1,0 +1,1393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Alpha|x64">
+      <Configuration>Alpha</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="DebugDev|x64">
+      <Configuration>DebugDev</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Dev|x64">
+      <Configuration>Dev</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{a9e289bb-37c4-4a45-9fab-a8ba01d31914}</ProjectGuid>
+    <RootNamespace>counterstrike2</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <ProjectName>weave</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <LLVMToolsVersion>17</LLVMToolsVersion>
+    <PlatformToolset>ClangCL</PlatformToolset>
+    <EnableASAN>false</EnableASAN>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>ClangCL</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <LLVMToolsVersion>17</LLVMToolsVersion>
+    <EnableASAN>false</EnableASAN>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dev|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>ClangCL</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <LLVMToolsVersion>17</LLVMToolsVersion>
+    <EnableASAN>false</EnableASAN>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>ClangCL</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <LLVMToolsVersion>17</LLVMToolsVersion>
+    <EnableASAN>true</EnableASAN>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Alpha|x64'">
+    <PlatformToolset>ClangCL</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <LLVMToolsVersion>17</LLVMToolsVersion>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Dev|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)build\debug\</OutDir>
+    <IntDir>$(SolutionDir)intermediate\debug\</IntDir>
+    <LibraryPath>$(ProjectDir)\third-party\library;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)\third-party;$(IncludePath)</IncludePath>
+    <ExternalIncludePath>$(ExternalIncludePath)</ExternalIncludePath>
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>cheat</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)build\release\</OutDir>
+    <IntDir>$(SolutionDir)intermediate\release\</IntDir>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
+    <LinkIncremental>false</LinkIncremental>
+    <GenerateManifest>false</GenerateManifest>
+    <IncludePath>$(ProjectDir)\utilities;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)\third-party\library;$(LibraryPath)</LibraryPath>
+    <ExternalIncludePath>$(MSBuildProjectDirectory)\third-party;$(ExternalIncludePath)</ExternalIncludePath>
+    <TargetName>cheat</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dev|x64'">
+    <OutDir>$(SolutionDir)build\dev\</OutDir>
+    <IntDir>$(SolutionDir)intermediate\dev\</IntDir>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
+    <LinkIncremental>false</LinkIncremental>
+    <GenerateManifest>false</GenerateManifest>
+    <IncludePath>$(ProjectDir)\utilities;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)\third-party\library;$(LibraryPath)</LibraryPath>
+    <ExternalIncludePath>$(MSBuildProjectDirectory)\third-party;$(ExternalIncludePath)</ExternalIncludePath>
+    <TargetName>cheat</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'">
+    <OutDir>$(SolutionDir)build\dev\</OutDir>
+    <IntDir>$(SolutionDir)intermediate\dev\</IntDir>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
+    <LinkIncremental>false</LinkIncremental>
+    <GenerateManifest>false</GenerateManifest>
+    <IncludePath>$(ProjectDir)\utilities;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)\third-party\library;$(LibraryPath)</LibraryPath>
+    <ExternalIncludePath>$(MSBuildProjectDirectory)\third-party;$(ExternalIncludePath)</ExternalIncludePath>
+    <TargetName>cheat</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Alpha|x64'">
+    <TargetExt>.dll</TargetExt>
+    <IncludePath>$(ProjectDir)\utilities;$(IncludePath)</IncludePath>
+    <ExternalIncludePath>$(MSBuildProjectDirectory)\third-party;$(ExternalIncludePath)</ExternalIncludePath>
+    <LibraryPath>$(ProjectDir)\third-party\library;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)build\alpha\</OutDir>
+    <IntDir>$(SolutionDir)intermediate\alpha\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;NOMINMAX;IMGUI_DEFINE_MATH_OPERATORS;JM_XORSTR_DISABLE_AVX_INTRINSICS;STBI_NO_SIMD;CURL_STATICLIB;no_cloud;_INC_MINMAX;CPPHTTPLIB_NO_EXCEPTIONS;WOLFSSL_TLS13;_DEV;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>false</ConformanceMode>
+      <Optimization>Disabled</Optimization>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <ExceptionHandling>false</ExceptionHandling>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <SupportJustMyCode>false</SupportJustMyCode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <BuildStlModules>false</BuildStlModules>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <AdditionalOptions>/clang:-fno-jump-tables -std=c++26 /utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <AdditionalDependencies>Ws2_32.lib;Crypt32.lib;d3d11.lib;wininet.lib;freetype.lib;brotlicommon-static.lib;brotlidec-static.lib;brotlienc-static.lib;bz2.lib;libpng16.lib;zlib.lib;Winmm.lib;flatbuffers.lib;lz4.lib;wolfssl.lib;kernel32.lib;ucrtd.lib;msvcrtd.lib;vcruntimed.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <EntryPointSymbol>entry_point</EntryPointSymbol>
+      <HeapReserveSize>
+      </HeapReserveSize>
+      <HeapCommitSize>
+      </HeapCommitSize>
+      <StackReserveSize>
+      </StackReserveSize>
+      <StackCommitSize>
+      </StackCommitSize>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <FxCompile>
+      <ShaderType>
+      </ShaderType>
+      <ShaderModel>4.0_level_9_3</ShaderModel>
+    </FxCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;_RELEASE;NOMINMAX;IMGUI_DEFINE_MATH_OPERATORS;JM_XORSTR_DISABLE_AVX_INTRINSICS;CPPHTTPLIB_NO_EXCEPTIONS;JSON_NOEXCEPTION;IMGUI_DISABLE_DEBUG_TOOLS;STBI_NO_SIMD;_INC_MINMAX;_HAS_EXCEPTIONS=0;WOLFSSL_TLS13;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>false</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <Optimization>Disabled</Optimization>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <AdditionalOptions>/clang:-fno-jump-tables </AdditionalOptions>
+      <ExceptionHandling>false</ExceptionHandling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <BuildStlModules>false</BuildStlModules>
+      <OpenMPSupport>false</OpenMPSupport>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <FloatingPointExceptions>false</FloatingPointExceptions>
+      <GuardEHContMetadata>false</GuardEHContMetadata>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <DebugInformationFormat>None</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
+      <OptimizeReferences>false</OptimizeReferences>
+      <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <EntryPointSymbol>entry_point</EntryPointSymbol>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <AdditionalDependencies>Ws2_32.lib;wldap32.lib;Crypt32.lib;d3d11.lib;kernel32.lib;ucrt.lib;msvcrt.lib;vcruntime.lib;wininet.lib;freetype.lib;brotlicommon-static.lib;brotlidec-static.lib;brotlienc-static.lib;bz2.lib;libpng16.lib;zlib.lib;Winmm.lib;flatbuffers.lib;lz4.lib;wolfssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>/map %(AdditionalOptions)</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <HeapReserveSize>
+      </HeapReserveSize>
+      <HeapCommitSize>
+      </HeapCommitSize>
+      <StackReserveSize>
+      </StackReserveSize>
+      <StackCommitSize>
+      </StackCommitSize>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dev|x64'">
+    <ClCompile>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;_DEV;NOMINMAX;IMGUI_DEFINE_MATH_OPERATORS;JM_XORSTR_DISABLE_AVX_INTRINSICS;CPPHTTPLIB_NO_EXCEPTIONS;JSON_NOEXCEPTION;IMGUI_DISABLE_DEBUG_TOOLS;STBI_NO_SIMD;_INC_MINMAX;_HAS_EXCEPTIONS=0;WOLFSSL_TLS13;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>false</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <Optimization>Disabled</Optimization>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <AdditionalOptions>/clang:-fno-jump-tables /std:c++latest</AdditionalOptions>
+      <ExceptionHandling>false</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BuildStlModules>false</BuildStlModules>
+      <OpenMPSupport>false</OpenMPSupport>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <FloatingPointExceptions>false</FloatingPointExceptions>
+      <GuardEHContMetadata>false</GuardEHContMetadata>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <DebugInformationFormat>None</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
+      <OptimizeReferences>false</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <EntryPointSymbol>entry_point</EntryPointSymbol>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <AdditionalDependencies>Ws2_32.lib;wldap32.lib;Crypt32.lib;d3d11.lib;kernel32.lib;ucrt.lib;msvcrt.lib;vcruntime.lib;wininet.lib;freetype.lib;brotlicommon-static.lib;brotlidec-static.lib;brotlienc-static.lib;bz2.lib;libpng16.lib;zlib.lib;Winmm.lib;flatbuffers.lib;lz4.lib;wolfssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>/map %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'">
+    <ClCompile>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;NOMINMAX;_DEV;IMGUI_DEFINE_MATH_OPERATORS;JM_XORSTR_DISABLE_AVX_INTRINSICS;CPPHTTPLIB_NO_EXCEPTIONS;JSON_NOEXCEPTION;IMGUI_DISABLE_DEBUG_TOOLS;STBI_NO_SIMD;_DebugDev;_INC_MINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>false</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard_C>Default</LanguageStandard_C>
+      <Optimization>MinSpace</Optimization>
+      <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <AdditionalOptions>/clang:-fno-jump-tables -fsanitize=address /Zi /INFERASANLIBS </AdditionalOptions>
+      <ExceptionHandling>false</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BuildStlModules>false</BuildStlModules>
+      <OpenMPSupport>false</OpenMPSupport>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FloatingPointExceptions>false</FloatingPointExceptions>
+      <GuardEHContMetadata>false</GuardEHContMetadata>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
+      <OptimizeReferences>false</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <EntryPointSymbol>entry_point</EntryPointSymbol>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <AdditionalDependencies>Ws2_32.lib;wldap32.lib;Crypt32.lib;d3d11.lib;kernel32.lib;ucrt.lib;msvcrt.lib;vcruntime.lib;wininet.lib;freetype.lib;brotlicommon-static.lib;brotlidec-static.lib;brotlienc-static.lib;bz2.lib;libpng16.lib;zlib.lib;Winmm.lib;flatbuffers.lib;lz4.lib;wolfssl.lib;clang_rt.asan_dynamic_runtime_thunk-x86_64.lib;clang_rt.asan_dynamic-x86_64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>/map /wholearchive:clang_rt.asan_dynamic-x86_64.lib /wholearchive:clang_rt.asan_dynamic_runtime_thunk-x86_64.lib %(AdditionalOptions)</AdditionalOptions>
+      <HeapReserveSize>500000000</HeapReserveSize>
+      <HeapCommitSize>500000000</HeapCommitSize>
+      <StackReserveSize>500000000</StackReserveSize>
+      <StackCommitSize>500000000</StackCommitSize>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Alpha|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <SupportJustMyCode>false</SupportJustMyCode>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <OmitFramePointers>false</OmitFramePointers>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;NOMINMAX;IMGUI_DEFINE_MATH_OPERATORS;JM_XORSTR_DISABLE_AVX_INTRINSICS;CPPHTTPLIB_NO_EXCEPTIONS;JSON_NOEXCEPTION;IMGUI_DISABLE_DEBUG_TOOLS;STBI_NO_SIMD;_INC_MINMAX;_HAS_EXCEPTIONS=0;_ALPHAB;WOLFSSL_TLS13;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>false</ExceptionHandling>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <FloatingPointExceptions>false</FloatingPointExceptions>
+      <GuardEHContMetadata>false</GuardEHContMetadata>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <AdditionalOptions>/clang:-fno-jump-tables /utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>Ws2_32.lib;wldap32.lib;Crypt32.lib;d3d11.lib;kernel32.lib;ucrt.lib;msvcrt.lib;vcruntime.lib;wininet.lib;freetype.lib;brotlicommon-static.lib;brotlidec-static.lib;brotlienc-static.lib;bz2.lib;libpng16.lib;zlib.lib;Winmm.lib;flatbuffers.lib;lz4.lib;wolfssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Link>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <EntryPointSymbol>entry_point</EntryPointSymbol>
+      <OptimizeReferences>false</OptimizeReferences>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <AdditionalOptions>/map %(AdditionalOptions)</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <HeapReserveSize>
+      </HeapReserveSize>
+      <HeapCommitSize>
+      </HeapCommitSize>
+      <StackReserveSize>
+      </StackReserveSize>
+      <StackCommitSize>
+      </StackCommitSize>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="core.cpp" />
+    <ClCompile Include="feature\misc\misc1.cpp" />
+    <ClCompile Include="feature\visuals\grenade_prediction_.cpp" />
+    <ClCompile Include="sdk\classes\c_weapon_cs_base.cpp" />
+    <ClCompile Include="utilities\crash_handler\crash_handler.cpp" />
+    <ClCompile Include="c_module_system.cpp" />
+    <ClCompile Include="entry.cpp" />
+    <ClCompile Include="feature\antiaim\antiaim.cpp" />
+    <ClCompile Include="feature\chams\chams.cpp" />
+    <ClCompile Include="feature\dormant\dormant.cpp" />
+    <ClCompile Include="feature\event\event.cpp" />
+    <ClCompile Include="feature\inventory_changer\inventory_changer.cpp" />
+    <ClCompile Include="feature\legitbot\legitbot.cpp" />
+    <ClCompile Include="feature\misc\bullet_impact.cpp" />
+    <ClCompile Include="feature\misc\bullet_trace.cpp" />
+    <ClCompile Include="feature\misc\buybot.cpp" />
+    <ClCompile Include="feature\misc\grenade_prediction.cpp" />
+    <ClCompile Include="feature\misc\grenade_trail.cpp" />
+    <ClCompile Include="feature\misc\hitmarker.cpp" />
+    <ClCompile Include="feature\misc\hitsound.cpp" />
+    <ClCompile Include="feature\misc\keybinds.cpp" />
+    <ClCompile Include="feature\misc\misc.h" />
+    <ClCompile Include="feature\misc\notify.cpp" />
+    <ClCompile Include="feature\misc\penetration_crosshair.cpp" />
+    <ClCompile Include="feature\misc\spectators.cpp" />
+    <ClCompile Include="feature\movement\movement_.cpp" />
+    <ClCompile Include="feature\prediction_system\prediction_system.cpp" />
+    <ClCompile Include="feature\penetration_system\firebullet_cs2.cpp" />
+    <ClCompile Include="feature\penetration_system\firebullet_csgo.cpp" />
+    <ClCompile Include="feature\penetration_system\fx_firebullet.cpp" />
+    <ClCompile Include="feature\lagcompensation\lagcompensation.cpp" />
+    <ClCompile Include="feature\ragebot\multipoint.cpp" />
+    <ClCompile Include="feature\ragebot\new_ragebot.h" />
+    <ClCompile Include="feature\ragebot\ragebot.cpp" />
+    <ClCompile Include="feature\ragebot\target_accuracy.cpp" />
+    <ClCompile Include="feature\ragebot\target_data.cpp" />
+    <ClCompile Include="feature\visuals\bomb_esp.cpp" />
+    <ClCompile Include="feature\visuals\overlay_render.cpp" />
+    <ClCompile Include="feature\visuals\player_esp.cpp" />
+    <ClCompile Include="feature\visuals\visuals.cpp" />
+    <ClCompile Include="gui\element\checkbox.cpp" />
+    <ClCompile Include="gui\element\colorpicker.cpp" />
+    <ClCompile Include="gui\element\combo.cpp" />
+    <ClCompile Include="gui\element\group.cpp" />
+    <ClCompile Include="gui\element\hotkey.cpp" />
+    <ClCompile Include="gui\element\multicombo.cpp" />
+    <ClCompile Include="gui\element\popup.cpp" />
+    <ClCompile Include="gui\element\slider.cpp" />
+    <ClCompile Include="gui\element\tab.cpp" />
+    <ClCompile Include="gui\element\text.cpp" />
+    <ClCompile Include="gui\gui.cpp" />
+    <ClCompile Include="gui\helper\animation.cpp" />
+    <ClCompile Include="gui\pages\esp_preview.cpp" />
+    <ClCompile Include="gui\pages\home_page.cpp" />
+    <ClCompile Include="gui\pages\inventory_page.cpp" />
+    <ClCompile Include="hooks\hooks.cpp" />
+    <ClCompile Include="hooks\vtables\animatable_object_scene.cpp" />
+    <ClCompile Include="hooks\vtables\camera_service.cpp" />
+    <ClCompile Include="hooks\vtables\client_mode.cpp" />
+    <ClCompile Include="hooks\vtables\csgo_input.cpp" />
+    <ClCompile Include="hooks\vtables\csgo_viewmodel.cpp" />
+    <ClCompile Include="hooks\vtables\c_base_model_entity.cpp" />
+    <ClCompile Include="hooks\vtables\c_base_scene_object_desc.cpp" />
+    <ClCompile Include="hooks\vtables\c_cs_player_pawn_table.cpp" />
+    <ClCompile Include="hooks\vtables\c_net_channel.cpp" />
+    <ClCompile Include="hooks\vtables\c_skybox_object_desc.cpp" />
+    <ClCompile Include="hooks\vtables\c_smoke_volume_scene_object_desc.cpp" />
+    <ClCompile Include="hooks\vtables\dx11.cpp" />
+    <ClCompile Include="hooks\vtables\grenade_tracer.cpp" />
+    <ClCompile Include="hooks\vtables\hud_scope.cpp" />
+    <ClCompile Include="hooks\vtables\input_system_table.cpp" />
+    <ClCompile Include="hooks\vtables\network_game_client.cpp" />
+    <ClCompile Include="hooks\vtables\post_processing.cpp" />
+    <ClCompile Include="hooks\vtables\prediction.cpp" />
+    <ClCompile Include="hooks\vtables\render.cpp" />
+    <ClCompile Include="hooks\vtables\source2.cpp" />
+    <ClCompile Include="hooks\vtables\view_render.cpp" />
+    <ClCompile Include="hooks\vtables\world_render.cpp" />
+    <ClCompile Include="hooks\vtables\с_ambient_occlusion.cpp" />
+    <ClCompile Include="loader\loader.cpp" />
+    <ClCompile Include="load_network_balancer\load_network_balancer.cpp" />
+    <ClCompile Include="renderer\d3d11_manager.cpp" />
+    <ClCompile Include="renderer\draw_manager.cpp" />
+    <ClCompile Include="renderer\font.cpp" />
+    <ClCompile Include="renderer\render_manager.cpp" />
+    <ClCompile Include="renderer\tex_dict_dx11.cpp" />
+    <ClCompile Include="sdk\classes\c_base_entity.cpp" />
+    <ClCompile Include="sdk\classes\c_base_player_weapon.cpp" />
+    <ClCompile Include="sdk\classes\c_clc_msg_voice_data.cpp" />
+    <ClCompile Include="sdk\classes\c_csgo_viewmodel.cpp" />
+    <ClCompile Include="sdk\classes\c_cs_player_controller.cpp" />
+    <ClCompile Include="sdk\classes\c_cs_player_inventory.cpp" />
+    <ClCompile Include="sdk\classes\c_cs_player_pawn.cpp" />
+    <ClCompile Include="sdk\classes\c_econ_item.cpp" />
+    <ClCompile Include="sdk\classes\c_econ_item_def.cpp" />
+    <ClCompile Include="sdk\classes\c_econ_item_system.cpp" />
+    <ClCompile Include="sdk\classes\c_econ_item_view.cpp" />
+    <ClCompile Include="sdk\classes\c_econ_scheme.cpp" />
+    <ClCompile Include="sdk\classes\c_game_particle_manager_system.cpp" />
+    <ClCompile Include="sdk\classes\c_game_scene_node.cpp" />
+    <ClCompile Include="sdk\classes\c_model.cpp" />
+    <ClCompile Include="sdk\classes\c_msg_voice_audio.cpp" />
+    <ClCompile Include="sdk\classes\c_prediction.cpp" />
+    <ClCompile Include="sdk\classes\c_skeleton_instance.cpp" />
+    <ClCompile Include="sdk\classes\c_utl_buffer.cpp" />
+    <ClCompile Include="sdk\classes\game_event_listener.cpp" />
+    <ClCompile Include="sdk\classes\trace.cpp" />
+    <ClCompile Include="sdk\classes\user_cmd.cpp" />
+    <ClCompile Include="sdk\gc\c_gc_client.cpp" />
+    <ClCompile Include="sdk\gc\c_gc_client_shared_object_cache.cpp" />
+    <ClCompile Include="sdk\interfaces\c_memalloc.cpp" />
+    <ClCompile Include="sdk\interfaces\c_resource_system.cpp" />
+    <ClCompile Include="sdk\interfaces\interfaces.cpp" />
+    <ClCompile Include="sdk\interfaces\i_engine_trace.cpp" />
+    <ClCompile Include="sdk\interfaces\i_entity_list.cpp" />
+    <ClCompile Include="sdk\math\math.cpp" />
+    <ClCompile Include="sdk\math\vector.cpp" />
+    <ClCompile Include="sdk\math\vector_2d.cpp" />
+    <ClCompile Include="sdk\math\vector_4d.cpp" />
+    <ClCompile Include="sdk\math\v_matrix.cpp" />
+    <ClCompile Include="sdk\proto\message_lite.cpp" />
+    <ClCompile Include="sdk\schema_offset.cpp" />
+    <ClCompile Include="sdk\schema_system\schema_system.cpp" />
+    <ClCompile Include="sdk\sdk.cpp" />
+    <ClCompile Include="sdk\sdl\sdl.cpp" />
+    <ClCompile Include="sdk\service\camera.cpp" />
+    <ClCompile Include="sdk\service\movement.cpp" />
+    <ClCompile Include="sdk\service\weapon.cpp" />
+    <ClCompile Include="sdk\vtex\DXT5Decoder.cpp" />
+    <ClCompile Include="sdk\vtex\VTexParser.cpp" />
+    <ClCompile Include="third-party\minhook\buffer.c" />
+    <ClCompile Include="third-party\minhook\hde\hde32.c" />
+    <ClCompile Include="third-party\minhook\hde\hde64.c" />
+    <ClCompile Include="third-party\minhook\hook.c" />
+    <ClCompile Include="third-party\minhook\trampoline.c" />
+    <ClCompile Include="third-party\snappy\snappy-sinksource.cc" />
+    <ClCompile Include="third-party\snappy\snappy-stubs-internal.cc" />
+    <ClCompile Include="third-party\snappy\snappy.cc" />
+    <ClCompile Include="utilities\address\address.cpp" />
+    <ClCompile Include="utilities\channel_system.cpp" />
+    <ClCompile Include="utilities\debug_console\debug.cpp" />
+    <ClCompile Include="utilities\dx11_helper\dx11_helper.cpp" />
+    <ClCompile Include="utilities\exception\weave_error.cpp" />
+    <ClCompile Include="utilities\hotkey_system\hotkey_system.cpp" />
+    <ClCompile Include="utilities\input_system\input_system.cpp" />
+    <ClCompile Include="utilities\multithread\atomic_lock.cpp" />
+    <ClCompile Include="utilities\multithread\multithread.cpp" />
+    <ClCompile Include="utilities\multithread\mutex.cpp" />
+    <ClCompile Include="utilities\multithread\packed_heap.cpp" />
+    <ClCompile Include="utilities\multithread\semaphores.cpp" />
+    <ClCompile Include="utilities\multithread\shared_mutex.cpp" />
+    <ClCompile Include="utilities\service\flatbuffers.cpp" />
+    <ClCompile Include="utilities\stack_trace\stack_trace.cpp" />
+    <ClCompile Include="utilities\tls\tls.cpp" />
+    <ClCompile Include="utilities\utilities.cpp" />
+    <ClCompile Include="utilities\cloud\user.cpp" />
+    <ClCompile Include="utilities\cloud\utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="core.hpp" />
+    <ClInclude Include="feature\visuals\grenade_prediction_.hpp" />
+    <ClInclude Include="renderer\images\cross.h" />
+    <ClInclude Include="sdk\interfaces\i_pvs_manager.h" />
+    <ClInclude Include="utilities\crash_handler\crash_handler.h" />
+    <ClInclude Include="feature\antiaim\antiaim.h" />
+    <ClInclude Include="feature\chams\chams.h" />
+    <ClInclude Include="feature\dormant\dormant.h" />
+    <ClInclude Include="feature\event\event.h" />
+    <ClInclude Include="feature\event\sounds.h" />
+    <ClInclude Include="feature\feature.hpp" />
+    <ClInclude Include="feature\inventory_changer\inventory_changer.h" />
+    <ClInclude Include="feature\legitbot\legitbot.hpp" />
+    <ClInclude Include="feature\misc\hitmarker.h" />
+    <ClInclude Include="feature\misc\hitsound.h" />
+    <ClInclude Include="feature\movement\movement_.h" />
+    <ClInclude Include="feature\prediction_system\prediction_system.h" />
+    <ClInclude Include="feature\ragebot\hitbox.h" />
+    <ClInclude Include="feature\lagcompensation\lagcompensation.hpp" />
+    <ClInclude Include="feature\ragebot\multipoint.h" />
+    <ClInclude Include="feature\ragebot\ragebot.hpp" />
+    <ClInclude Include="feature\ragebot\rage_enums.h" />
+    <ClInclude Include="feature\visuals\visuals.hpp" />
+    <ClInclude Include="flat_message\output\cpp\antiaim_table_generated.h" />
+    <ClInclude Include="flat_message\output\cpp\config_table_generated.h" />
+    <ClInclude Include="flat_message\output\cpp\legit_settings_table_generated.h" />
+    <ClInclude Include="flat_message\output\cpp\misc_table_generated.h" />
+    <ClInclude Include="flat_message\output\cpp\rage_settings_table_generated.h" />
+    <ClInclude Include="flat_message\output\cpp\request_generated.h" />
+    <ClInclude Include="flat_message\output\cpp\request_table_generated.h" />
+    <ClInclude Include="flat_message\output\cpp\response_table_generated.h" />
+    <ClInclude Include="flat_message\output\cpp\visuals_table_generated.h" />
+    <ClInclude Include="gui\gui.h" />
+    <ClInclude Include="gui\helper\animation.h" />
+    <ClInclude Include="gui\helper\easing.hpp" />
+    <ClInclude Include="gui\menu_js.h" />
+    <ClInclude Include="hooks\hooks.hpp" />
+    <ClInclude Include="loader\loader.h" />
+    <ClInclude Include="load_network_balancer\load_network_balancer.h" />
+    <ClInclude Include="Logging.h" />
+    <ClInclude Include="renderer\d3d11_manager.hpp" />
+    <ClInclude Include="renderer\draw_manager.hpp" />
+    <ClInclude Include="renderer\font.hpp" />
+    <ClInclude Include="renderer\fonts\inter.h" />
+    <ClInclude Include="renderer\fonts\pixel.h" />
+    <ClInclude Include="renderer\fonts\sans.h" />
+    <ClInclude Include="renderer\fonts\verdana.h" />
+    <ClInclude Include="renderer\fonts\weapons.h" />
+    <ClInclude Include="renderer\images\images.h" />
+    <ClInclude Include="renderer\images\logo.h" />
+    <ClInclude Include="renderer\images\share.h" />
+    <ClInclude Include="renderer\images\shunk.h" />
+    <ClInclude Include="renderer\images\solar_pen.h" />
+    <ClInclude Include="renderer\images\solar_user.h" />
+    <ClInclude Include="renderer\images\trash.h" />
+    <ClInclude Include="renderer\images\zalupa.h" />
+    <ClInclude Include="renderer\render_manager.h" />
+    <ClInclude Include="renderer\shaders\cpp\d3d11\pixel\blur_x.h" />
+    <ClInclude Include="renderer\shaders\cpp\d3d11\pixel\blur_y.h" />
+    <ClInclude Include="renderer\shaders\cpp\d3d11\pixel\generic.h" />
+    <ClInclude Include="renderer\shaders\cpp\d3d11\pixel\key.h" />
+    <ClInclude Include="renderer\shaders\cpp\d3d11\pixel\scissor.h" />
+    <ClInclude Include="renderer\shaders\cpp\d3d11\pixel\scissor_blur_x.h" />
+    <ClInclude Include="renderer\shaders\cpp\d3d11\pixel\scissor_blur_y.h" />
+    <ClInclude Include="renderer\shaders\cpp\d3d11\pixel\scissor_key.h" />
+    <ClInclude Include="renderer\shaders\cpp\d3d11\vertex\generic.h" />
+    <ClInclude Include="renderer\shaders_dx11.hpp" />
+    <ClInclude Include="renderer\tex_dict_dx11.hpp" />
+    <ClInclude Include="sdk\classes\c_animation_graph_instance.hpp" />
+    <ClInclude Include="sdk\classes\c_animation_graph_visualization_manager.hpp" />
+    <ClInclude Include="sdk\classes\c_anim_component_manager_instance.hpp" />
+    <ClInclude Include="sdk\classes\c_anim_demo_manager.hpp" />
+    <ClInclude Include="sdk\classes\c_anim_graph_settings_manager.hpp" />
+    <ClInclude Include="sdk\classes\c_anim_parameter_list_instance.hpp" />
+    <ClInclude Include="sdk\classes\c_anim_parameter_manager_updater.hpp" />
+    <ClInclude Include="sdk\classes\c_anim_skeleton.hpp" />
+    <ClInclude Include="sdk\classes\c_anim_tag_manager.hpp" />
+    <ClInclude Include="sdk\classes\c_anim_update.hpp" />
+    <ClInclude Include="sdk\classes\c_application.h" />
+    <ClInclude Include="sdk\classes\c_attachments.hpp" />
+    <ClInclude Include="sdk\classes\c_attribute_container.hpp" />
+    <ClInclude Include="sdk\classes\c_base_anim_graph_controller.hpp" />
+    <ClInclude Include="sdk\classes\c_base_cs_grenade.h" />
+    <ClInclude Include="sdk\classes\c_base_cs_grenade_projectile.h" />
+    <ClInclude Include="sdk\classes\c_base_entity.hpp" />
+    <ClInclude Include="sdk\classes\c_base_file_system.hpp" />
+    <ClInclude Include="sdk\classes\c_base_grenade.h" />
+    <ClInclude Include="sdk\classes\c_base_model_entity.hpp" />
+    <ClInclude Include="sdk\classes\c_base_player_controller.hpp" />
+    <ClInclude Include="sdk\classes\c_base_player_pawn.hpp" />
+    <ClInclude Include="sdk\classes\c_base_player_weapon.hpp" />
+    <ClInclude Include="sdk\classes\c_beam.hpp" />
+    <ClInclude Include="sdk\classes\c_body_component_base_anim_graph.hpp" />
+    <ClInclude Include="sdk\classes\c_bones.hpp" />
+    <ClInclude Include="sdk\classes\c_bone_data.h" />
+    <ClInclude Include="sdk\classes\c_buffer_string.h" />
+    <ClInclude Include="sdk\classes\c_clc_msg_voice_data.h" />
+    <ClInclude Include="sdk\classes\c_client_alpha_property.hpp" />
+    <ClInclude Include="sdk\classes\c_client_mode.hpp" />
+    <ClInclude Include="sdk\classes\c_collision_property.hpp" />
+    <ClInclude Include="sdk\classes\c_command_context.hpp" />
+    <ClInclude Include="sdk\classes\c_command_line.h" />
+    <ClInclude Include="sdk\classes\c_csgo_hud_chat.h" />
+    <ClInclude Include="sdk\classes\c_csgo_player_anim_graph_state.hpp" />
+    <ClInclude Include="sdk\classes\c_csgo_viewmodel.hpp" />
+    <ClInclude Include="sdk\classes\c_cs_game_rules.h" />
+    <ClInclude Include="sdk\classes\c_cs_inventory_manager.hpp" />
+    <ClInclude Include="sdk\classes\c_cs_player_controller.hpp" />
+    <ClInclude Include="sdk\classes\c_cs_player_inventory.hpp" />
+    <ClInclude Include="sdk\classes\c_cs_player_pawn.hpp" />
+    <ClInclude Include="sdk\classes\c_cs_player_pawn_base.hpp" />
+    <ClInclude Include="sdk\classes\c_drawcalls.hpp" />
+    <ClInclude Include="sdk\classes\c_econ_entity.hpp" />
+    <ClInclude Include="sdk\classes\c_econ_item.hpp" />
+    <ClInclude Include="sdk\classes\c_econ_item_attribute_definition.h" />
+    <ClInclude Include="sdk\classes\c_econ_item_def.hpp" />
+    <ClInclude Include="sdk\classes\c_econ_item_system.hpp" />
+    <ClInclude Include="sdk\classes\c_econ_item_view.hpp" />
+    <ClInclude Include="sdk\classes\c_econ_scheme.hpp" />
+    <ClInclude Include="sdk\classes\c_entity2_network_classes.hpp" />
+    <ClInclude Include="sdk\classes\c_fe_anim_stray_radius.h" />
+    <ClInclude Include="sdk\classes\c_fe_axial_edge_bend.h" />
+    <ClInclude Include="sdk\classes\c_fe_box_rigid.h" />
+    <ClInclude Include="sdk\classes\c_fe_collision_plane.h" />
+    <ClInclude Include="sdk\classes\c_fe_ctrl_offset.h" />
+    <ClInclude Include="sdk\classes\c_fe_ctrl_os_offset.h" />
+    <ClInclude Include="sdk\classes\c_fe_effect_desc.h" />
+    <ClInclude Include="sdk\classes\c_fe_fit_matrix.h" />
+    <ClInclude Include="sdk\classes\c_fe_fit_weight.h" />
+    <ClInclude Include="sdk\classes\c_fe_follow_node.h" />
+    <ClInclude Include="sdk\classes\c_fe_jiggle_bone.h" />
+    <ClInclude Include="sdk\classes\c_fe_kelager_bend2.h" />
+    <ClInclude Include="sdk\classes\c_fe_morph_layer_depr.h" />
+    <ClInclude Include="sdk\classes\c_fe_node_base.h" />
+    <ClInclude Include="sdk\classes\c_fe_node_integrator.h" />
+    <ClInclude Include="sdk\classes\c_fe_node_reverse_offset.h" />
+    <ClInclude Include="sdk\classes\c_fe_node_wind_base.h" />
+    <ClInclude Include="sdk\classes\c_fe_quad.h" />
+    <ClInclude Include="sdk\classes\c_fe_rigid_collider_indices.h" />
+    <ClInclude Include="sdk\classes\c_fe_rod_constraint.h" />
+    <ClInclude Include="sdk\classes\c_fe_simd_anim_stray_radius.h" />
+    <ClInclude Include="sdk\classes\c_fe_simd_node_base.h" />
+    <ClInclude Include="sdk\classes\c_fe_simd_quad_t.h" />
+    <ClInclude Include="sdk\classes\c_fe_simd_rod_constraint.h" />
+    <ClInclude Include="sdk\classes\c_fe_simd_rod_constraint_anim.h" />
+    <ClInclude Include="sdk\classes\c_fe_simd_spring_integrator.h" />
+    <ClInclude Include="sdk\classes\c_fe_simd_tri.h" />
+    <ClInclude Include="sdk\classes\c_fe_sphere_rigid.h" />
+    <ClInclude Include="sdk\classes\c_fe_tapered_capsule_rigid.h" />
+    <ClInclude Include="sdk\classes\c_fe_tapered_capsule_stretch.h" />
+    <ClInclude Include="sdk\classes\c_fe_tree_children.h" />
+    <ClInclude Include="sdk\classes\c_fe_twist_constraint.h" />
+    <ClInclude Include="sdk\classes\c_fe_vertex_map_desc.h" />
+    <ClInclude Include="sdk\classes\c_fe_world_collision_params.h" />
+    <ClInclude Include="sdk\classes\c_four_quaternions.h" />
+    <ClInclude Include="sdk\classes\c_four_vectors.h" />
+    <ClInclude Include="sdk\classes\c_four_vectors_2d.h" />
+    <ClInclude Include="sdk\classes\c_fx_queue_manager_impl.h" />
+    <ClInclude Include="sdk\classes\c_game_particle_manager_system.hpp" />
+    <ClInclude Include="sdk\classes\c_game_scene_node.hpp" />
+    <ClInclude Include="sdk\classes\c_grenade_trace.h" />
+    <ClInclude Include="sdk\classes\c_hitbox.hpp" />
+    <ClInclude Include="sdk\classes\c_material_system2_app_system_dict.h" />
+    <ClInclude Include="sdk\classes\c_model.hpp" />
+    <ClInclude Include="sdk\classes\c_model_state.h" />
+    <ClInclude Include="sdk\classes\c_msg_voice_audio.h" />
+    <ClInclude Include="sdk\classes\c_network_game_client.hpp" />
+    <ClInclude Include="sdk\classes\c_network_messages.h" />
+    <ClInclude Include="sdk\classes\c_network_serializer_pb.h" />
+    <ClInclude Include="sdk\classes\c_net_chan.hpp" />
+    <ClInclude Include="sdk\classes\c_panorama_ui_engine2.h" />
+    <ClInclude Include="sdk\classes\c_particle_manager.h" />
+    <ClInclude Include="sdk\classes\c_particle_snapshot.h" />
+    <ClInclude Include="sdk\classes\c_perm_model_data.h" />
+    <ClInclude Include="sdk\classes\c_perm_model_ext_part.h" />
+    <ClInclude Include="sdk\classes\c_perm_model_info.h" />
+    <ClInclude Include="sdk\classes\c_physmodel.hpp" />
+    <ClInclude Include="sdk\classes\c_planted.hpp" />
+    <ClInclude Include="sdk\classes\c_player_ping.hpp" />
+    <ClInclude Include="sdk\classes\c_prediction.hpp" />
+    <ClInclude Include="sdk\classes\c_protobuff_binding.h" />
+    <ClInclude Include="sdk\classes\c_quaternion_storage.h" />
+    <ClInclude Include="sdk\classes\c_rendermesh.hpp" />
+    <ClInclude Include="sdk\classes\c_render_game_system.hpp" />
+    <ClInclude Include="sdk\classes\c_resource_binding.h" />
+    <ClInclude Include="sdk\classes\c_rn_plane.h" />
+    <ClInclude Include="sdk\classes\c_scene_animatable_object.h" />
+    <ClInclude Include="sdk\classes\c_scene_utils.h" />
+    <ClInclude Include="sdk\classes\c_scene_view_debug_overlays.h" />
+    <ClInclude Include="sdk\classes\c_shoot_position_history_entry_t.h" />
+    <ClInclude Include="sdk\classes\c_skeleton_instance.h" />
+    <ClInclude Include="sdk\classes\c_strong_handle.h" />
+    <ClInclude Include="sdk\classes\c_svc_msg_voice_data.h" />
+    <ClInclude Include="sdk\classes\c_swap_chain.h" />
+    <ClInclude Include="sdk\classes\c_transform.h" />
+    <ClInclude Include="sdk\classes\c_utl_binary_block.h" />
+    <ClInclude Include="sdk\classes\c_utl_buffer.h" />
+    <ClInclude Include="sdk\classes\c_utl_map.hpp" />
+    <ClInclude Include="sdk\classes\c_utl_memory.h" />
+    <ClInclude Include="sdk\classes\c_utl_memory_fixed_growable.h" />
+    <ClInclude Include="sdk\classes\c_utl_string.h" />
+    <ClInclude Include="sdk\classes\c_utl_symbol_large.h" />
+    <ClInclude Include="sdk\classes\c_utl_vector.hpp" />
+    <ClInclude Include="sdk\classes\c_utl_vector_fixed_glowable.h" />
+    <ClInclude Include="sdk\classes\c_view_render.h" />
+    <ClInclude Include="sdk\classes\c_view_setup.hpp" />
+    <ClInclude Include="sdk\classes\c_weapon_cs_base.hpp" />
+    <ClInclude Include="sdk\classes\c_weapon_cs_base_v_data.hpp" />
+    <ClInclude Include="sdk\classes\enums.hpp" />
+    <ClInclude Include="sdk\classes\c_fe_indexed_jiggle_bone.h" />
+    <ClInclude Include="sdk\classes\c_fe_tri.h" />
+    <ClInclude Include="sdk\classes\c_fe_ctrl_soft_offset.h" />
+    <ClInclude Include="sdk\classes\game_event_listener.hpp" />
+    <ClInclude Include="sdk\classes\game_event_manager.hpp" />
+    <ClInclude Include="sdk\classes\global_vars.hpp" />
+    <ClInclude Include="sdk\classes\handle.hpp" />
+    <ClInclude Include="sdk\classes\c_phys_fe_model_desc.h" />
+    <ClInclude Include="sdk\classes\trace.hpp" />
+    <ClInclude Include="sdk\classes\user_cmd.hpp" />
+    <ClInclude Include="sdk\gc\c_gc_client.hpp" />
+    <ClInclude Include="sdk\gc\c_gc_client_shared_object_cache.hpp" />
+    <ClInclude Include="sdk\gc\c_gc_client_shared_object_type_cache.hpp" />
+    <ClInclude Include="sdk\gc\c_gc_client_system.hpp" />
+    <ClInclude Include="sdk\interfaces\c_game_ui_service.h" />
+    <ClInclude Include="sdk\interfaces\c_localize.h" />
+    <ClInclude Include="sdk\interfaces\c_memalloc.h" />
+    <ClInclude Include="sdk\interfaces\c_resource_system.hpp" />
+    <ClInclude Include="sdk\interfaces\interfaces.hpp" />
+    <ClInclude Include="sdk\interfaces\i_client.hpp" />
+    <ClInclude Include="sdk\interfaces\i_convars.hpp" />
+    <ClInclude Include="sdk\interfaces\i_csgo_input.hpp" />
+    <ClInclude Include="sdk\interfaces\i_engine_client.hpp" />
+    <ClInclude Include="sdk\interfaces\i_engine_trace.hpp" />
+    <ClInclude Include="sdk\interfaces\i_entity_list.hpp" />
+    <ClInclude Include="sdk\interfaces\i_input_system.hpp" />
+    <ClInclude Include="sdk\interfaces\i_network_game_service.hpp" />
+    <ClInclude Include="sdk\interfaces\i_scene_debug_overlay.hpp" />
+    <ClInclude Include="sdk\interfaces\i_schema_system.hpp" />
+    <ClInclude Include="sdk\interfaces\virtual.hpp" />
+    <ClInclude Include="sdk\math\color_t.hpp" />
+    <ClInclude Include="sdk\math\math.hpp" />
+    <ClInclude Include="sdk\math\vector.hpp" />
+    <ClInclude Include="sdk\math\vector_2d.hpp" />
+    <ClInclude Include="sdk\math\vector_4d.hpp" />
+    <ClInclude Include="sdk\math\v_matrix.hpp" />
+    <ClInclude Include="sdk\proto\internal_metadata.h" />
+    <ClInclude Include="sdk\proto\message_lite.h" />
+    <ClInclude Include="sdk\proto\proto.h" />
+    <ClInclude Include="sdk\schema_offset.h" />
+    <ClInclude Include="sdk\schema_system\schema_system.hpp" />
+    <ClInclude Include="sdk\sdk.hpp" />
+    <ClInclude Include="sdk\sdl\sdl.hpp" />
+    <ClInclude Include="sdk\service\action_tracking.hpp" />
+    <ClInclude Include="sdk\service\bullet.hpp" />
+    <ClInclude Include="sdk\service\camera.hpp" />
+    <ClInclude Include="sdk\service\inventory_service.h" />
+    <ClInclude Include="sdk\service\item.hpp" />
+    <ClInclude Include="sdk\service\movement.hpp" />
+    <ClInclude Include="sdk\service\observer.hpp" />
+    <ClInclude Include="sdk\service\ping.hpp" />
+    <ClInclude Include="sdk\service\viewmodel.hpp" />
+    <ClInclude Include="sdk\service\weapon.hpp" />
+    <ClInclude Include="sdk\steam\isteamapplist.h" />
+    <ClInclude Include="sdk\steam\isteamapps.h" />
+    <ClInclude Include="sdk\steam\isteamappticket.h" />
+    <ClInclude Include="sdk\steam\isteamclient.h" />
+    <ClInclude Include="sdk\steam\isteamcontroller.h" />
+    <ClInclude Include="sdk\steam\isteamfriends.h" />
+    <ClInclude Include="sdk\steam\isteamgamecoordinator.h" />
+    <ClInclude Include="sdk\steam\isteamgameserver.h" />
+    <ClInclude Include="sdk\steam\isteamgameserverstats.h" />
+    <ClInclude Include="sdk\steam\isteamhtmlsurface.h" />
+    <ClInclude Include="sdk\steam\isteamhttp.h" />
+    <ClInclude Include="sdk\steam\isteaminventory.h" />
+    <ClInclude Include="sdk\steam\isteammasterserverupdater.h" />
+    <ClInclude Include="sdk\steam\isteammatchmaking.h" />
+    <ClInclude Include="sdk\steam\isteammusic.h" />
+    <ClInclude Include="sdk\steam\isteammusicremote.h" />
+    <ClInclude Include="sdk\steam\isteamnetworking.h" />
+    <ClInclude Include="sdk\steam\isteamparentalsettings.h" />
+    <ClInclude Include="sdk\steam\isteamps3overlayrenderer.h" />
+    <ClInclude Include="sdk\steam\isteamremotestorage.h" />
+    <ClInclude Include="sdk\steam\isteamscreenshots.h" />
+    <ClInclude Include="sdk\steam\isteamugc.h" />
+    <ClInclude Include="sdk\steam\isteamuser.h" />
+    <ClInclude Include="sdk\steam\isteamuserstats.h" />
+    <ClInclude Include="sdk\steam\isteamutils.h" />
+    <ClInclude Include="sdk\steam\isteamvideo.h" />
+    <ClInclude Include="sdk\steam\matchmakingtypes.h" />
+    <ClInclude Include="sdk\steam\steamclientpublic.h" />
+    <ClInclude Include="sdk\steam\steamencryptedappticket.h" />
+    <ClInclude Include="sdk\steam\steamhttpenums.h" />
+    <ClInclude Include="sdk\steam\steamps3params.h" />
+    <ClInclude Include="sdk\steam\steamtypes.h" />
+    <ClInclude Include="sdk\steam\steamuniverse.h" />
+    <ClInclude Include="sdk\steam\steam_api.h" />
+    <ClInclude Include="sdk\steam\steam_api_flat.h" />
+    <ClInclude Include="sdk\steam\steam_api_internal.h" />
+    <ClInclude Include="sdk\steam\steam_gameserver.h" />
+    <ClInclude Include="sdk\vtex\DXT5Decoder.h" />
+    <ClInclude Include="sdk\vtex\vtex.h" />
+    <ClInclude Include="sdk\vtex\VTexParser.h" />
+    <ClInclude Include="signatures.hpp" />
+    <ClInclude Include="source2-sdk\classes\entities.hpp" />
+    <ClInclude Include="source2-sdk\interfaces\ClientClass.hpp" />
+    <ClInclude Include="source2-sdk\interfaces\CResourceSystem.hpp" />
+    <ClInclude Include="source2-sdk\interfaces\Enums.hpp" />
+    <ClInclude Include="source2-sdk\interfaces\IBaseHandle.hpp" />
+    <ClInclude Include="source2-sdk\interfaces\IClient.hpp" />
+    <ClInclude Include="source2-sdk\interfaces\IClientEntity.hpp" />
+    <ClInclude Include="source2-sdk\interfaces\IClientNetworkable.hpp" />
+    <ClInclude Include="source2-sdk\interfaces\IClientRenderable.hpp" />
+    <ClInclude Include="source2-sdk\interfaces\IClientThinkable.hpp" />
+    <ClInclude Include="source2-sdk\interfaces\IClientUnknown.hpp" />
+    <ClInclude Include="source2-sdk\interfaces\ICollideable.hpp" />
+    <ClInclude Include="source2-sdk\interfaces\IConvars.hpp" />
+    <ClInclude Include="source2-sdk\interfaces\ICSInput.hpp" />
+    <ClInclude Include="source2-sdk\interfaces\IEngineClient.hpp" />
+    <ClInclude Include="source2-sdk\interfaces\IEntityList.hpp" />
+    <ClInclude Include="source2-sdk\interfaces\IHandleEntity.hpp" />
+    <ClInclude Include="source2-sdk\interfaces\IInputSystem.hpp" />
+    <ClInclude Include="source2-sdk\interfaces\IRenderer.hpp" />
+    <ClInclude Include="source2-sdk\interfaces\ISceneDebugOverlay.hpp" />
+    <ClInclude Include="source2-sdk\interfaces\ISChemaSystem.hpp" />
+    <ClInclude Include="source2-sdk\interfaces\IEngineTrace.hpp" />
+    <ClInclude Include="source2-sdk\interfaces\Recv.hpp" />
+    <ClInclude Include="source2-sdk\math\Vector2D.hpp" />
+    <ClInclude Include="source2-sdk\math\Vector4D.hpp" />
+    <ClInclude Include="source2-sdk\math\VMatrix.hpp" />
+    <ClInclude Include="third-party\dlg\dlg.h" />
+    <ClInclude Include="third-party\dlg\output.h" />
+    <ClInclude Include="third-party\flatbuffers\allocator.h" />
+    <ClInclude Include="third-party\flatbuffers\array.h" />
+    <ClInclude Include="third-party\flatbuffers\base.h" />
+    <ClInclude Include="third-party\flatbuffers\buffer.h" />
+    <ClInclude Include="third-party\flatbuffers\buffer_ref.h" />
+    <ClInclude Include="third-party\flatbuffers\code_generator.h" />
+    <ClInclude Include="third-party\flatbuffers\code_generators.h" />
+    <ClInclude Include="third-party\flatbuffers\default_allocator.h" />
+    <ClInclude Include="third-party\flatbuffers\detached_buffer.h" />
+    <ClInclude Include="third-party\flatbuffers\file_manager.h" />
+    <ClInclude Include="third-party\flatbuffers\flatbuffers.h" />
+    <ClInclude Include="third-party\flatbuffers\flatbuffer_builder.h" />
+    <ClInclude Include="third-party\flatbuffers\flatc.h" />
+    <ClInclude Include="third-party\flatbuffers\flexbuffers.h" />
+    <ClInclude Include="third-party\flatbuffers\flex_flat_util.h" />
+    <ClInclude Include="third-party\flatbuffers\grpc.h" />
+    <ClInclude Include="third-party\flatbuffers\hash.h" />
+    <ClInclude Include="third-party\flatbuffers\idl.h" />
+    <ClInclude Include="third-party\flatbuffers\minireflect.h" />
+    <ClInclude Include="third-party\flatbuffers\pch\flatc_pch.h" />
+    <ClInclude Include="third-party\flatbuffers\pch\pch.h" />
+    <ClInclude Include="third-party\flatbuffers\reflection.h" />
+    <ClInclude Include="third-party\flatbuffers\reflection_generated.h" />
+    <ClInclude Include="third-party\flatbuffers\registry.h" />
+    <ClInclude Include="third-party\flatbuffers\stl_emulation.h" />
+    <ClInclude Include="third-party\flatbuffers\string.h" />
+    <ClInclude Include="third-party\flatbuffers\struct.h" />
+    <ClInclude Include="third-party\flatbuffers\table.h" />
+    <ClInclude Include="third-party\flatbuffers\util.h" />
+    <ClInclude Include="third-party\flatbuffers\vector.h" />
+    <ClInclude Include="third-party\flatbuffers\vector_downward.h" />
+    <ClInclude Include="third-party\flatbuffers\verifier.h" />
+    <ClInclude Include="third-party\freetype\config\ftconfig.h" />
+    <ClInclude Include="third-party\freetype\config\ftheader.h" />
+    <ClInclude Include="third-party\freetype\config\ftmodule.h" />
+    <ClInclude Include="third-party\freetype\config\ftoption.h" />
+    <ClInclude Include="third-party\freetype\config\ftstdlib.h" />
+    <ClInclude Include="third-party\freetype\config\integer-types.h" />
+    <ClInclude Include="third-party\freetype\config\mac-support.h" />
+    <ClInclude Include="third-party\freetype\config\public-macros.h" />
+    <ClInclude Include="third-party\freetype\freetype.h" />
+    <ClInclude Include="third-party\freetype\ftadvanc.h" />
+    <ClInclude Include="third-party\freetype\ftbbox.h" />
+    <ClInclude Include="third-party\freetype\ftbdf.h" />
+    <ClInclude Include="third-party\freetype\ftbitmap.h" />
+    <ClInclude Include="third-party\freetype\ftbzip2.h" />
+    <ClInclude Include="third-party\freetype\ftcache.h" />
+    <ClInclude Include="third-party\freetype\ftchapters.h" />
+    <ClInclude Include="third-party\freetype\ftcid.h" />
+    <ClInclude Include="third-party\freetype\ftcolor.h" />
+    <ClInclude Include="third-party\freetype\ftdriver.h" />
+    <ClInclude Include="third-party\freetype\fterrdef.h" />
+    <ClInclude Include="third-party\freetype\fterrors.h" />
+    <ClInclude Include="third-party\freetype\ftfntfmt.h" />
+    <ClInclude Include="third-party\freetype\ftgasp.h" />
+    <ClInclude Include="third-party\freetype\ftglyph.h" />
+    <ClInclude Include="third-party\freetype\ftgxval.h" />
+    <ClInclude Include="third-party\freetype\ftgzip.h" />
+    <ClInclude Include="third-party\freetype\ftimage.h" />
+    <ClInclude Include="third-party\freetype\ftincrem.h" />
+    <ClInclude Include="third-party\freetype\ftlcdfil.h" />
+    <ClInclude Include="third-party\freetype\ftlist.h" />
+    <ClInclude Include="third-party\freetype\ftlogging.h" />
+    <ClInclude Include="third-party\freetype\ftlzw.h" />
+    <ClInclude Include="third-party\freetype\ftmac.h" />
+    <ClInclude Include="third-party\freetype\ftmm.h" />
+    <ClInclude Include="third-party\freetype\ftmodapi.h" />
+    <ClInclude Include="third-party\freetype\ftmoderr.h" />
+    <ClInclude Include="third-party\freetype\ftotval.h" />
+    <ClInclude Include="third-party\freetype\ftoutln.h" />
+    <ClInclude Include="third-party\freetype\ftparams.h" />
+    <ClInclude Include="third-party\freetype\ftpfr.h" />
+    <ClInclude Include="third-party\freetype\ftrender.h" />
+    <ClInclude Include="third-party\freetype\ftsizes.h" />
+    <ClInclude Include="third-party\freetype\ftsnames.h" />
+    <ClInclude Include="third-party\freetype\ftstroke.h" />
+    <ClInclude Include="third-party\freetype\ftsynth.h" />
+    <ClInclude Include="third-party\freetype\ftsystem.h" />
+    <ClInclude Include="third-party\freetype\fttrigon.h" />
+    <ClInclude Include="third-party\freetype\fttypes.h" />
+    <ClInclude Include="third-party\freetype\ftwinfnt.h" />
+    <ClInclude Include="third-party\freetype\internal\autohint.h" />
+    <ClInclude Include="third-party\freetype\internal\cffotypes.h" />
+    <ClInclude Include="third-party\freetype\internal\cfftypes.h" />
+    <ClInclude Include="third-party\freetype\internal\compiler-macros.h" />
+    <ClInclude Include="third-party\freetype\internal\ftcalc.h" />
+    <ClInclude Include="third-party\freetype\internal\ftdebug.h" />
+    <ClInclude Include="third-party\freetype\internal\ftdrv.h" />
+    <ClInclude Include="third-party\freetype\internal\ftgloadr.h" />
+    <ClInclude Include="third-party\freetype\internal\fthash.h" />
+    <ClInclude Include="third-party\freetype\internal\ftmemory.h" />
+    <ClInclude Include="third-party\freetype\internal\ftmmtypes.h" />
+    <ClInclude Include="third-party\freetype\internal\ftobjs.h" />
+    <ClInclude Include="third-party\freetype\internal\ftpsprop.h" />
+    <ClInclude Include="third-party\freetype\internal\ftrfork.h" />
+    <ClInclude Include="third-party\freetype\internal\ftserv.h" />
+    <ClInclude Include="third-party\freetype\internal\ftstream.h" />
+    <ClInclude Include="third-party\freetype\internal\fttrace.h" />
+    <ClInclude Include="third-party\freetype\internal\ftvalid.h" />
+    <ClInclude Include="third-party\freetype\internal\psaux.h" />
+    <ClInclude Include="third-party\freetype\internal\pshints.h" />
+    <ClInclude Include="third-party\freetype\internal\services\svbdf.h" />
+    <ClInclude Include="third-party\freetype\internal\services\svcfftl.h" />
+    <ClInclude Include="third-party\freetype\internal\services\svcid.h" />
+    <ClInclude Include="third-party\freetype\internal\services\svfntfmt.h" />
+    <ClInclude Include="third-party\freetype\internal\services\svgldict.h" />
+    <ClInclude Include="third-party\freetype\internal\services\svgxval.h" />
+    <ClInclude Include="third-party\freetype\internal\services\svkern.h" />
+    <ClInclude Include="third-party\freetype\internal\services\svmetric.h" />
+    <ClInclude Include="third-party\freetype\internal\services\svmm.h" />
+    <ClInclude Include="third-party\freetype\internal\services\svotval.h" />
+    <ClInclude Include="third-party\freetype\internal\services\svpfr.h" />
+    <ClInclude Include="third-party\freetype\internal\services\svpostnm.h" />
+    <ClInclude Include="third-party\freetype\internal\services\svprop.h" />
+    <ClInclude Include="third-party\freetype\internal\services\svpscmap.h" />
+    <ClInclude Include="third-party\freetype\internal\services\svpsinfo.h" />
+    <ClInclude Include="third-party\freetype\internal\services\svsfnt.h" />
+    <ClInclude Include="third-party\freetype\internal\services\svttcmap.h" />
+    <ClInclude Include="third-party\freetype\internal\services\svtteng.h" />
+    <ClInclude Include="third-party\freetype\internal\services\svttglyf.h" />
+    <ClInclude Include="third-party\freetype\internal\services\svwinfnt.h" />
+    <ClInclude Include="third-party\freetype\internal\sfnt.h" />
+    <ClInclude Include="third-party\freetype\internal\svginterface.h" />
+    <ClInclude Include="third-party\freetype\internal\t1types.h" />
+    <ClInclude Include="third-party\freetype\internal\tttypes.h" />
+    <ClInclude Include="third-party\freetype\internal\wofftypes.h" />
+    <ClInclude Include="third-party\freetype\otsvg.h" />
+    <ClInclude Include="third-party\freetype\t1tables.h" />
+    <ClInclude Include="third-party\freetype\ttnameid.h" />
+    <ClInclude Include="third-party\freetype\tttables.h" />
+    <ClInclude Include="third-party\freetype\tttags.h" />
+    <ClInclude Include="third-party\ft2build.h" />
+    <ClInclude Include="third-party\minhook\buffer.h" />
+    <ClInclude Include="third-party\minhook\hde\hde32.h" />
+    <ClInclude Include="third-party\minhook\hde\hde64.h" />
+    <ClInclude Include="third-party\minhook\hde\pstdint.h" />
+    <ClInclude Include="third-party\minhook\hde\table32.h" />
+    <ClInclude Include="third-party\minhook\hde\table64.h" />
+    <ClInclude Include="third-party\minhook\MinHook.h" />
+    <ClInclude Include="third-party\minhook\trampoline.h" />
+    <ClInclude Include="third-party\snappy\snappy-internal.h" />
+    <ClInclude Include="third-party\snappy\snappy-sinksource.h" />
+    <ClInclude Include="third-party\snappy\snappy-stubs-internal.h" />
+    <ClInclude Include="third-party\snappy\snappy-stubs-public.h" />
+    <ClInclude Include="third-party\snappy\snappy.h" />
+    <ClInclude Include="third-party\sparsehash\internal\densehashtable.h" />
+    <ClInclude Include="third-party\sparsehash\internal\hashtable-common.h" />
+    <ClInclude Include="third-party\sparsehash\internal\libc_allocator_with_realloc.h" />
+    <ClInclude Include="third-party\sparsehash\internal\sparsehashtable.h" />
+    <ClInclude Include="third-party\sparsehash\internal\sparseconfig.h" />
+    <ClInclude Include="third-party\sparsehash\template_util.h" />
+    <ClInclude Include="third-party\sparsehash\type_traits.h" />
+    <ClInclude Include="third-party\stb\stb_image.h" />
+    <ClInclude Include="third-party\stb\stb_rect_pack.h" />
+    <ClInclude Include="third-party\thread_pool\thread_pool.h" />
+    <ClInclude Include="third-party\thread_pool\thread_safe_queue.h" />
+    <ClInclude Include="third-party\wolfssl\callbacks.h" />
+    <ClInclude Include="third-party\wolfssl\certs_test.h" />
+    <ClInclude Include="third-party\wolfssl\crl.h" />
+    <ClInclude Include="third-party\wolfssl\error-ssl.h" />
+    <ClInclude Include="third-party\wolfssl\ocsp.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\aes.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\asn1.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\asn1t.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\bio.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\bn.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\buffer.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\camellia.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\cmac.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\cms.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\compat_types.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\conf.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\crypto.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\des.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\dh.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\dsa.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\ec.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\ec25519.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\ec448.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\ecdh.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\ecdsa.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\ed25519.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\ed448.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\engine.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\err.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\evp.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\fips_rand.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\hmac.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\kdf.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\lhash.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\md4.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\md5.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\modes.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\objects.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\obj_mac.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\ocsp.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\opensslconf.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\opensslv.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\ossl_typ.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\pem.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\pkcs12.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\pkcs7.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\rand.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\rc4.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\ripemd.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\rsa.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\sha.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\sha3.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\srp.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\ssl.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\ssl23.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\stack.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\tls1.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\txt_db.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\ui.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\x509.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\x509v3.h" />
+    <ClInclude Include="third-party\wolfssl\openssl\x509_vfy.h" />
+    <ClInclude Include="third-party\wolfssl\options.h" />
+    <ClInclude Include="third-party\wolfssl\quic.h" />
+    <ClInclude Include="third-party\wolfssl\sniffer.h" />
+    <ClInclude Include="third-party\wolfssl\sniffer_error.h" />
+    <ClInclude Include="third-party\wolfssl\ssl.h" />
+    <ClInclude Include="third-party\wolfssl\test.h" />
+    <ClInclude Include="third-party\wolfssl\version.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\aes.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\arc4.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\asn.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\asn_public.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\blake2-impl.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\blake2-int.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\blake2.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\camellia.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\chacha.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\chacha20_poly1305.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\cmac.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\coding.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\compress.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\cpuid.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\cryptocb.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\curve25519.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\curve448.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\des3.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\dh.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\dilithium.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\dsa.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\ecc.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\eccsi.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\ed25519.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\ed448.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\error-crypt.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\ext_kyber.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\falcon.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\fe_448.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\fe_operations.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\fips_test.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\ge_448.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\ge_operations.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\hash.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\hmac.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\hpke.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\integer.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\kdf.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\kyber.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\logging.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\md2.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\md4.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\md5.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\memory.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\mem_track.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\mpi_class.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\mpi_superclass.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\pkcs12.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\pkcs7.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\poly1305.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\port\maxim\maxq10xx.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\port\psa\psa.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\pwdbased.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\random.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\rc2.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\ripemd.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\rsa.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\sakke.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\settings.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\sha.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\sha256.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\sha3.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\sha512.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\signature.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\siphash.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\sphincs.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\sp_int.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\srp.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\tfm.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\types.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\visibility.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\wc_encrypt.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\wc_kyber.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\wc_port.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\wolfevent.h" />
+    <ClInclude Include="third-party\wolfssl\wolfcrypt\wolfmath.h" />
+    <ClInclude Include="third-party\wolfssl\wolfio.h" />
+    <ClInclude Include="third-party\tinyformat\tinyformat.h" />
+    <ClInclude Include="utilities\address\address.hpp" />
+    <ClInclude Include="utilities\channel_system.h" />
+    <ClInclude Include="utilities\debug\debug.hpp" />
+    <ClInclude Include="utilities\debug_console\debug.hpp" />
+    <ClInclude Include="utilities\dx11_helper\dx11_helper.hpp" />
+    <ClInclude Include="utilities\exception\weave_error.h" />
+    <ClInclude Include="utilities\fnv.h" />
+    <ClInclude Include="utilities\hash.h" />
+    <ClInclude Include="utilities\hotkey_system\hotkey_system.h" />
+    <ClInclude Include="utilities\imgui\helpers.h" />
+    <ClInclude Include="utilities\imgui\toggle\imgui_offset_rect.h" />
+    <ClInclude Include="utilities\imgui\toggle\imgui_toggle.h" />
+    <ClInclude Include="utilities\imgui\toggle\imgui_toggle_math.h" />
+    <ClInclude Include="utilities\imgui\toggle\imgui_toggle_palette.h" />
+    <ClInclude Include="utilities\imgui\toggle\imgui_toggle_presets.h" />
+    <ClInclude Include="utilities\imgui\toggle\imgui_toggle_renderer.h" />
+    <ClInclude Include="utilities\input_system\input_system.h" />
+    <ClInclude Include="utilities\math_render.h" />
+    <ClInclude Include="utilities\multithread\atomic_lock.h" />
+    <ClInclude Include="utilities\multithread\multithread.hpp" />
+    <ClInclude Include="utilities\multithread\mutex.h" />
+    <ClInclude Include="utilities\multithread\packed_heap.h" />
+    <ClInclude Include="utilities\multithread\semaphores.h" />
+    <ClInclude Include="utilities\multithread\shared_mutex.h" />
+    <ClInclude Include="utilities\mutex_protected.h" />
+    <ClInclude Include="utilities\nlohmann\json.hpp" />
+    <ClInclude Include="utilities\service\authentication_generated.h" />
+    <ClInclude Include="utilities\service\chat_generated.h" />
+    <ClInclude Include="utilities\service\configs_generated.h" />
+    <ClInclude Include="utilities\service\config_generated.h" />
+    <ClInclude Include="utilities\service\flatbuffers.hpp" />
+    <ClInclude Include="utilities\service\loader_generated.h" />
+    <ClInclude Include="utilities\service\loader_pattern_generated.h" />
+    <ClInclude Include="utilities\service\online_generated.h" />
+    <ClInclude Include="utilities\service\request_generated.h" />
+    <ClInclude Include="utilities\service\schema_generated.h" />
+    <ClInclude Include="utilities\stack_trace\stack_trace.h" />
+    <ClInclude Include="utilities\tls\tls.h" />
+    <ClInclude Include="utilities\UnixTime.h" />
+    <ClInclude Include="utilities\utilities.hpp" />
+    <ClInclude Include="utilities\web\cloud\cloud.hpp" />
+    <ClInclude Include="utilities\cloud\user.h" />
+    <ClInclude Include="utilities\cloud\utils.h" />
+    <ClInclude Include="utilities\xorstr.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="flatbuffers.targets" />
+    <None Include="renderer\shaders\d3d11\include\blur.hlsli" />
+    <None Include="renderer\shaders\d3d11\include\scissor_blur.hlsli" />
+    <None Include="renderer\shaders\d3d11\include\types.hlsli" />
+    <None Include="third-party\flatc.exe" />
+    <None Include="third-party\sparsehash\dense_hash_map.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="flatbuffers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="renderer\shaders\d3d11\pixel\blur_x.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Dev|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Dev|x64'">4.0</ShaderModel>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">blur_x</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)renderer\shaders\cpp\d3d11\pixel\blur_x.h</HeaderFileOutput>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Dev|x64'">$(ProjectDir)renderer\shaders\cpp\d3d11\pixel\blur_x.h</HeaderFileOutput>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Dev|x64'">blur_x</VariableName>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Alpha|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Alpha|x64'">4.0</ShaderModel>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'">blur_x</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'">$(ProjectDir)renderer\shaders\cpp\d3d11\pixel\blur_x.h</HeaderFileOutput>
+    </FxCompile>
+    <FxCompile Include="renderer\shaders\d3d11\pixel\blur_y.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Dev|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Dev|x64'">4.0</ShaderModel>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">blur_y</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)renderer\shaders\cpp\d3d11\pixel\blur_y.h</HeaderFileOutput>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Dev|x64'">blur_y</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Dev|x64'">$(ProjectDir)renderer\shaders\cpp\d3d11\pixel\blur_y.h</HeaderFileOutput>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Alpha|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Alpha|x64'">4.0</ShaderModel>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'">blur_y</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'">$(ProjectDir)renderer\shaders\cpp\d3d11\pixel\blur_y.h</HeaderFileOutput>
+    </FxCompile>
+    <FxCompile Include="renderer\shaders\d3d11\pixel\generic.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Dev|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Dev|x64'">4.0</ShaderModel>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">generic</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)renderer\shaders\cpp\d3d11\pixel\generic.h</HeaderFileOutput>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Alpha|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Alpha|x64'">4.0</ShaderModel>
+    </FxCompile>
+    <FxCompile Include="renderer\shaders\d3d11\pixel\key.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Dev|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Dev|x64'">4.0</ShaderModel>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">key</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)renderer\shaders\cpp\d3d11\pixel\key.h</HeaderFileOutput>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Alpha|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Alpha|x64'">4.0</ShaderModel>
+    </FxCompile>
+    <FxCompile Include="renderer\shaders\d3d11\pixel\scissor.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Dev|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Dev|x64'">4.0</ShaderModel>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">scissor</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)renderer\shaders\cpp\d3d11\pixel\scissor.h</HeaderFileOutput>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Alpha|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Alpha|x64'">4.0</ShaderModel>
+    </FxCompile>
+    <FxCompile Include="renderer\shaders\d3d11\pixel\scissor_blur_x.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Dev|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Dev|x64'">4.0</ShaderModel>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">scissor_blur_x</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)renderer\shaders\cpp\d3d11\pixel\scissor_blur_x.h</HeaderFileOutput>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Alpha|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Alpha|x64'">4.0</ShaderModel>
+    </FxCompile>
+    <FxCompile Include="renderer\shaders\d3d11\pixel\scissor_blur_y.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Dev|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Dev|x64'">4.0</ShaderModel>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">scissor_blur_y</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)renderer\shaders\cpp\d3d11\pixel\scissor_blur_y.h</HeaderFileOutput>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Alpha|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Alpha|x64'">4.0</ShaderModel>
+    </FxCompile>
+    <FxCompile Include="renderer\shaders\d3d11\pixel\scissor_key.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Dev|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Dev|x64'">4.0</ShaderModel>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">scissor_key</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)renderer\shaders\cpp\d3d11\pixel\scissor_key.h</HeaderFileOutput>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Alpha|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Alpha|x64'">4.0</ShaderModel>
+    </FxCompile>
+    <FxCompile Include="renderer\shaders\d3d11\vertex\generic.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Dev|x64'">Vertex</ShaderType>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">generic</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)renderer\shaders\cpp\d3d11\vertex.h</HeaderFileOutput>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'">$(ProjectDir)renderer\shaders\cpp\d3d11\vertex.h</HeaderFileOutput>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'">generic</VariableName>
+      <DisableOptimizations Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'">true</DisableOptimizations>
+      <EnableDebuggingInformation Condition="'$(Configuration)|$(Platform)'=='DebugDev|x64'">true</EnableDebuggingInformation>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Alpha|x64'">Vertex</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Alpha|x64'">4.0</ShaderModel>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <FlatBuffer Include="flat_message\antiaim_table.fbs" />
+    <FlatBuffer Include="flat_message\config_table.fbs" />
+    <FlatBuffer Include="flat_message\misc_table.fbs" />
+    <FlatBuffer Include="flat_message\rage_settings_table.fbs" />
+    <FlatBuffer Include="utilities\service\authentication.fbs" />
+    <FlatBuffer Include="utilities\service\chat.fbs" />
+    <FlatBuffer Include="utilities\service\config.fbs" />
+    <FlatBuffer Include="utilities\service\configs.fbs" />
+    <FlatBuffer Include="utilities\service\crash.fbs" />
+    <FlatBuffer Include="utilities\service\loader.fbs" />
+    <FlatBuffer Include="utilities\service\online.fbs" />
+    <FlatBuffer Include="utilities\service\request.fbs" />
+    <FlatBuffer Include="utilities\service\response.fbs" />
+    <FlatBuffer Include="utilities\service\user.fbs" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
+    <Import Project="flatbuffers.targets" />
+  </ImportGroup>
+</Project>

@@ -1,0 +1,4 @@
+table LoaderRegister {
+username:string;
+build:string;
+}

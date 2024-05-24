@@ -1,0 +1,40 @@
+table hitboxes_ {
+    m_head:bool;
+    m_chest:bool;
+    m_stomach:bool;
+    m_arms:bool;
+    m_legs:bool;
+    m_foot:bool;
+}
+
+table autostop_option_ {
+    m_beetwen_shot:bool;
+    m_accuracy:bool;
+    m_molotov_ignore:bool;
+}
+
+table rage_global_settings {
+    m_enabled:bool;
+    m_auto_fire:bool;
+    m_auto_scope:bool;
+    m_silent:bool;
+    m_penetration:bool;
+    m_nospread:bool;
+    m_norecoil:bool;
+    m_hideshots:bool;
+    backtrack_mode:int;
+}
+
+table rage_settings {
+m_index:int;
+m_group:int;
+test:float;
+name:string;
+hitboxes:hitboxes_;
+multipoints:hitboxes_;
+autostop:bool;
+autostop_option:autostop_option_;
+hitchance_amount:int;
+point_scale:int;
+damage:int;
+}

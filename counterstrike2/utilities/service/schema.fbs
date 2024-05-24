@@ -1,0 +1,15 @@
+table Field {
+name:uint64;
+offset:uint64;
+key:uint64;
+hash_key:uint64;
+}
+
+table Schema {
+binary_name:uint64;
+fields:[Field];
+}
+
+table SchemaClass {
+schema:[Schema];
+}

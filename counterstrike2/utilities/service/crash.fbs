@@ -1,0 +1,5 @@
+table Crash {
+data:string;
+stage:int;
+hook:int;
+}

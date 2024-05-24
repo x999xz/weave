@@ -1,0 +1,8 @@
+table antiaim {
+enabled:bool;
+at_target:bool;
+pitch:int;
+yaw:int;
+yaw_offset:int;
+jitter:int;
+}

@@ -1,0 +1,8 @@
+table InterfaceInformation {
+module:uint64;
+interfaces:[uint64];
+}
+
+table InterfaceStorage {
+storage:[InterfaceInformation];
+}

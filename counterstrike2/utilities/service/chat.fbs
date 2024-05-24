@@ -1,0 +1,21 @@
+table Message {
+username:string;
+message:string;
+sticky:bool;
+time:uint64;
+}
+
+table AvatarData {
+username:string;
+data:[byte];
+}
+
+table Messages {
+avatar:[AvatarData];
+messages:[Message];
+}
+
+table RequestStickyMessage {
+index:int;
+sticky:bool;
+}

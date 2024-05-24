@@ -1,0 +1,3 @@
+table LoaderInterface {
+interfaces:[uint64];
+}

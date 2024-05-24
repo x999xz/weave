@@ -1,0 +1,5 @@
+table Request {
+type:uint64;
+game:int;
+data:[byte];
+}

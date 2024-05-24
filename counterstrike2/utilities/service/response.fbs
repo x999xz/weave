@@ -1,0 +1,5 @@
+table Response {
+type:int;
+data:[byte];
+error:string;
+}

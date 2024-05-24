@@ -1,0 +1,33 @@
+table flags_ {
+bomb:bool;
+kits:bool;
+armor:bool;
+flashed:bool;
+zeus:bool;
+defuser:bool;
+}
+
+table weapons_ {
+name:bool;
+icon:bool;
+}
+
+table visuals {
+name:bool;
+name_color:uint;
+box:bool;
+box_color:uint;
+avatar:bool;
+health:bool;
+flags:flags_;
+skeleton:bool;
+skeleton_color:uint;
+m_weapons:weapons_;
+chams_visible:bool;
+chams_visible_color:uint;
+chams_type:int;
+chams_invisible:bool;
+chams_invisible_color:uint;
+attachment_chams:bool;
+attachment_chams_color:uint;
+}

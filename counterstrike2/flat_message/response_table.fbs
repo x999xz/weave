@@ -1,0 +1,14 @@
+table Response {
+error:string;
+data:string;
+}
+
+table ConfigResponse {
+name:string;
+value:string;
+share:string;
+updated:int64;
+created:int64;
+user:string;
+owner:string;
+}

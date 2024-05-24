@@ -1,0 +1,7 @@
+table User {
+username:string;
+id:string;
+prefix:string;
+sub_time:uint64;
+avatar:[byte];
+}

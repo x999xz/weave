@@ -1,0 +1,8 @@
+table OnlineUser {
+username:string;
+avatar:[byte];
+}
+
+table Online {
+online:[OnlineUser];
+}

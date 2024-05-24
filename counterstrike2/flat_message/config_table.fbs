@@ -1,0 +1,59 @@
+include "antiaim_table.fbs";
+include "misc_table.fbs";
+include "legit_settings_table.fbs";
+include "rage_settings_table.fbs";
+include "visuals_table.fbs";
+
+
+table Hotkey_ {
+    hash:uint64;
+    key:int;
+    mode:int;
+    visible:bool;
+    type:int;
+    name_visual:[string];
+    name:[string];
+    value:[double];
+}
+
+table Inventory {
+    item_id:uint64;
+    team:int;
+    slot:int;
+}
+
+table Item {
+    item_def: int;
+    paint_name: string;
+    name: string;
+    skin_key: uint64;
+    paint_id: int;
+    rariry: int;
+    texture_id: int;
+    type: int;
+    path_image: string;
+    is_initilization: bool;
+    paint_seed: int;
+    paint_wear: int;
+    stattrack: int;
+    stickers_0: int;
+    stickers_1: int;
+    stickers_2: int;
+    stickers_3: int;
+    stickers_4: int;
+    custom_name:string;
+    id:uint64;
+}
+
+table ConfigSettings {
+    m_verify: bool;
+    m_antiaim: antiaim;
+    m_legit_weapons: [legit_settings];
+    m_rage_global_settings:rage_global_settings;
+    m_rage_weapons:[rage_settings];
+    m_visuals:visuals;
+    m_misc:misc;
+    m_binds:[Hotkey_];
+    m_equip_inventory:[Inventory];
+    m_added_item:[Item];
+}
